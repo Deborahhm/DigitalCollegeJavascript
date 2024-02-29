@@ -8,7 +8,7 @@
 - [x] \<title\>\</title\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/title)
 - [x] \<link\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/link)
 - [x] \<body\>\</body\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/body)
-- [] \<nav\>\</nav\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/nav)
+- [ ] \<nav\>\</nav\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/nav)
 - [x] \<ul\>\</ul\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/ul)
 - [x] \<li\>\</li\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/li)
 - [x] \<a\>\</a\> [doc](https://developer.mozilla.org/pt-BR/docs/Web/HTML/Element/a)q
