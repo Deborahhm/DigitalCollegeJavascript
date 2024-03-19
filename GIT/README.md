@@ -1,0 +1,27 @@
+- [ ] **git init**
+  - Inicia um novo repositório git dentro dentro da pasta onde for executado
+- [ ] **git config --global user.name**
+  - Esse comando vai exibir nome do usuário global que está configurado no GIT, se não exibir nada é pq não foi configurado nenhum nome de usuário ainda.
+- [ ] **git config --global user.name "\<seu nome\>"**
+  - É o mesmo comando anterior porém com um valor a mais, agora no lugar de exibir o nome, estou configurando um nome de usuário
+  - Esse comando é usado para configurar o nome de usuário que está usando o git (Esse nome vai ser usando como Author dos commits)
+  - Usando a opção `--global` esse comando não precisa ser executado dentro de uma pasta específica, pode ser executado de qualquer diretório que vai funcionar pois estamos definindo uma configuração global.
+  - A opção `--global` garante que esse mesmo `user.name` seja usado em outros repositórios git e por isso só precisamos executar uma vez depois de instalar o GIT
+- [ ] **git config --global user.email**
+  - Esse comando vai exibir o email do usuário global que está configurado no GIT, se não exibir nada é pq não foi configurado nenhum email de usuário ainda.
+- [ ] **git config --global user.email "\<seu@mail.com\>"**
+  - É o mesmo comando anterior porém com um valor a mais, agora no lugar de exibir o email, estou configurando um email de usuário
+  - Esse comando é usado para configurar o email de usuário que esta usando o git (Esse nome vai ser usando como Author dos commits)
+  - Usando a opção `--global` esse comando não precisa ser executado dentro de uma pasta específica, pode ser executado de qualquer diretório que vai funcionar pois estamos definindo uma configuração global.
+  - A opção `--global` garante que esse mesmo `user.email` seja usado em outros repositórios git e por isso só precisamos executar uma vez depois de instalar o GIT
+- [ ] **git status**
+  - Exibe o status atual do diretório, se tem arquivos novo, alterados ou deletados que precisam ser "commitados"
+  - Normalmente exibe algum dica/sugestão do próximo comando que precisa ser executado
+- [ ] **git add \<file\>**
+  - Comando para informar quais arquivos serão adicionado no próximo commit
+- [ ] **git commit -m "\<message\>"**
+  - Comando "registra" no histórico do git as alterações dos arquivos que anteriormente foram adicionados com o comando `git add`
+  - Esse comando precisa ter a opção `-m` seguido de uma mensagem entre aspas, esse mensagem pode ser qualquer coisas mas o ideal é que seja uma mensagem relacionado ao arquivos que estão indo no commit
+- [ ] **git log**
+  - Exibe o histórico de commits, do mais recente ao mais antigo
+  - Por padrão o git log congela a tela do terminal, ficando visível apenas o sinal de dois ponto (:) no canto inferior esquerdo, para descongelar o terminal depois de usar o git log, basta pressionar a tecla **q** do teclado
