@@ -25,3 +25,9 @@
 - [ ] **git log**
   - Exibe o histórico de commits, do mais recente ao mais antigo
   - Por padrão o git log congela a tela do terminal, ficando visível apenas o sinal de dois ponto (:) no canto inferior esquerdo, para descongelar o terminal depois de usar o git log, basta pressionar a tecla **q** do teclado
+- [ ] **git clone**
+- [ ] **git diff**
+- [ ] **git push**
+- [ ] **git push -u <remote> <branch>**
+- [ ] **git remote -v**
+- [ ] **git remote add <name> <URL>**
