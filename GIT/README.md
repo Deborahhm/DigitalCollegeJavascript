@@ -31,11 +31,11 @@
   - Quando entrar dentro da pasta pelo terminal de comandos, não é preciso executar o comando `git init`, como foi um pasta criada pelo git clone ela já inicia todo configurada para aceitar comandos git 
 - [ ] **git diff**
   - Exibe a diferença entre a ultima versão comitada de um arquivo e versão atual
-- [ ] **git push <remote> <branch>**
+- [ ] **git push \<remote\> \<branch\>**
   - Faz o envio dos commit para o repositorio remoto, dessa forma outra pessoa da minha equipe pode baixar o que eu fiz.
   - Remote é o nome do remote para onde quero enviar as alterações (por padrão é usado o remote *origin* se não especificado no comando)
   - Branch é nome da branch onde estão os commits que quero enviar para o remote 
-- [ ] **git push -u <remote> <branch>**
+- [ ] **git push -u \<remote\> \<branch\>**
   - Tem a mesma função que o comando anterior mas é usado nos casos em que a branch existe no meu repositorio local mas não existe no repositorio remoto
   - A opção `-u` é uma abreviação de `--set-upstream` que ser para conectar uma branch local com uma branch remota
 - [ ] **git remote -v**
