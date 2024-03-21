@@ -40,7 +40,7 @@
   - A opção `-u` é uma abreviação de `--set-upstream` que ser para conectar uma branch local com uma branch remota
 - [ ] **git remote -v**
   - Esse comando exibe os repositórios remotos que estão configurados no meu repositório local
-- [ ] **git remote add <name> <URL>**
+- [ ] **git remote add \<name\> \<URL\>**
   - Esse comando configura um repositório local com um repositorio remoto
   - <name> é o nome que você vai definir para seu remote, se o repositório não tiver nenhuma remote configurado o ideal é criar um remote com a nome *origin*
   - <URL> é a url de onde está o seu repositório remoto, no nosso caso vai ser a url que o github fornece quando criamos um repositorio
