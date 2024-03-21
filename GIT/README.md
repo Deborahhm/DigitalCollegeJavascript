@@ -25,9 +25,21 @@
 - [ ] **git log**
   - Exibe o histórico de commits, do mais recente ao mais antigo
   - Por padrão o git log congela a tela do terminal, ficando visível apenas o sinal de dois ponto (:) no canto inferior esquerdo, para descongelar o terminal depois de usar o git log, basta pressionar a tecla **q** do teclado
-- [ ] **git clone**
+- [ ] **git clone \<URL\>**
+  - Esse comando faz download do repositório git remoto e cria uma pasta dentro do diretório de onde foi executado
+  - A pasta criada por esse comando tem o mesmo nome que foi definido para um repositório remoto
+  - Quando entrar dentro da pasta pelo terminal de comandos, não é preciso executar o comando `git init`, como foi um pasta criada pelo git clone ela já inicia todo configurada para aceitar comandos git 
 - [ ] **git diff**
-- [ ] **git push**
+  - Exibe a diferença entre a ultima versão comitada de um arquivo e versão atual
+- [ ] **git push <remote> <branch>**
+  - Faz o envio dos commit para o repositorio remoto, dessa forma outra pessoa da minha equipe pode baixar o que eu fiz.
+  - Remote é o nome do remote para onde quero enviar as alterações (por padrão é usado o remote *origin* se não especificado no comando)
+  - Branch é nome da branch onde estão os commits que quero enviar para o remote 
 - [ ] **git push -u <remote> <branch>**
+  - Tem a mesma função que o comando anterior mas é usado nos casos em que a branch existe no meu repositorio local mas não existe no repositorio remoto
+  - A opção `-u` é uma abreviação de `--set-upstream` que ser para conectar uma branch local com uma branch remota
 - [ ] **git remote -v**
+  - Esse comando exibe os repositórios remotos que estão configurados no meu repositório local
 - [ ] **git remote add <name> <URL>**
+  - Esse comando configura um repositório local com um repositorio remoto
+  - 
