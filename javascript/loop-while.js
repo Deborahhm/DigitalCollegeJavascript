@@ -21,6 +21,18 @@ let index = 0;
 
 let authorized = false;
 
+/*while (index < storage.length) {
+    let userEmail = storage[index].email;
+    let userPassword = storage[index].password
+    
+    if(email === userEmail && password === userPassword ) {
+        authorized = true
+        break;
+    }
+
+    index++;
+}*/
+
 do {
     console.log(storage[index]);
 
@@ -40,15 +52,5 @@ while (index < storage.length)
 console.log(authorized ? "Está logado" : "Não está logado")
 
 
-/*while (index < storage.length) {
-    let userEmail = storage[index].email;
-    let userPassword = storage[index].password
-    
-    if(email === userEmail && password === userPassword ) {
-        authorized = true
-        break;
-    }
 
-    index++;
-}*/
 
