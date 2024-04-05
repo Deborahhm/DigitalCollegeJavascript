@@ -11,6 +11,7 @@ function atualizarPosicao() {
 
     carros.forEach(function (carro) {
         carro.distancia += carro.velocidade + parseInt(Math.random() * 10 + 10);
+        
         if(!vencedor && carro.distancia >= 100) {
             vencedor = carro.name;
         }
