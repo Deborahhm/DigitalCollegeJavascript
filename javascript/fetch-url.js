@@ -4,21 +4,18 @@ let jsonUrl = 'https://jsonplaceholder.typicode.com/posts';
 
 let requestJson = fetch(jsonUrl);
 
-requestJson.then(function(response){
-    response.json().then(function(json){
-        console.log(json[0]);
-    })
+requestJson
+.then(response => response.json())
+.then(json => {
+    console.log('render posts');
 })
 
 
 let request = fetch(url);
 
 request.then(function(response) {
-
     response.text().then(function (texto) {
-        
         // console.log(texto);
-
     })
 });
 
