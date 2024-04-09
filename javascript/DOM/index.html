@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM</title>
 </head>
-<body class="body">
-    <h1 class="meu_titulo" id="titulo-1">
-        Titulo 1
-    </h1>
-    <h1 class="meu_titulo" id="titulo-2">
-        Titulo 2
-    </h1>
 
-    <script>
-        let byTagName = document.getElementsByTagName('h1')
-        let byClassName = document.getElementsByClassName('meu_titulo')
-        let byId = document.getElementById('titulo-1');
-        let bySelector = document.querySelector('.body .meu_titulo')
-        let bySelectorAll = document.querySelectorAll('.body .meu_titulo')
-        
-        console.log({
-            byTagName, byClassName, byId, bySelector, bySelectorAll
-        })
-    </script>
+<body class="body">
+    <form action="" id="form-produtos">
+        <label for="input-name">Nome</label>
+        <br>
+        <input type="text" name="name" id="input-name">
+        <br>
+        <br>
+        <label for="input-price">Preço</label>
+        <br>
+        <input type="text" name="price" id="input-price">
+        <br>
+        <br>
+        <button>Cadastrar</button>
+    </form>
+    <br>
+
+    <div id="name"></div>
+    <div id="price"></div>
+
+    <script src="script.js"></script>
 </body>
 </html>
