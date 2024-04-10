@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM</title>
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
 </head>
 
 <body class="body">
@@ -13,10 +18,14 @@
         <br>
         <input type="text" name="name" id="input-name">
         <br>
+        <small class="error" id="input-name-error"></small>
+        <br>
         <br>
         <label for="input-price">Preço</label>
         <br>
         <input type="text" name="price" id="input-price">
+        <br>
+        <small class="error" id="input-price-error"></small>
         <br>
         <br>
         <button>Cadastrar</button>

@@ -4,11 +4,34 @@ let inputName = document.getElementById('input-name');
 let inputPrice = document.getElementById('input-price');
 let outputName = document.getElementById('name');
 let outputPrice = document.getElementById('price');
+let inputNameError = document.getElementById('input-name-error')
+let inputPriceError = document.getElementById('input-price-error')
+
+
+formProdutos.addEventListener('submit', event => {
+
+    inputNameError.textContent = '';
+    inputPriceError.textContent = '';
+
+    if(!inputName.value){
+        inputNameError.textContent = 'Campo Nome precisa ser preenchido';
+        event.preventDefault();
+    }
+
+    if(!inputPrice.value) {
+        inputPriceError.textContent = 'Campo Preço precisa ser preenchido'
+        event.preventDefault();
+    }
+})
+
 
 inputName.addEventListener('input', event => {
     outputName.textContent = event.target.value;
 });
 
+inputPrice.addEventListener('input', event => {
+    outputPrice.textContent = event.target.value;
+})
 
 
 
