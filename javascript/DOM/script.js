@@ -2,42 +2,59 @@
 let formProdutos = document.getElementById('form-produtos');
 let inputName = document.getElementById('input-name');
 let inputPrice = document.getElementById('input-price');
-let outputName = document.getElementById('name');
-let outputPrice = document.getElementById('price');
 let inputNameError = document.getElementById('input-name-error');
 let inputPriceError = document.getElementById('input-price-error');
 let formMsg = document.getElementById('form-msg');
+let productList = document.getElementById('product-list');
 
 
 formProdutos.addEventListener('submit', event => {
     event.preventDefault();
 
+    
+
     inputNameError.textContent = '';
     inputPriceError.textContent = '';
 
+    let hasError = false;
+
     if(!inputName.value){
         inputNameError.textContent = 'Campo Nome precisa ser preenchido';
+        hasError = true;
     }
 
     if(!inputPrice.value) {
-        inputPriceError.textContent = 'Campo Preço precisa ser preenchido'
+        inputPriceError.textContent = 'Campo Preço precisa ser preenchido';
+        hasError = true;
     }
 
-    window.localStorage.setItem('nomeDoProduto', inputName.value);
-    window.localStorage.setItem('precoDoProduto', inputPrice.value);
-    formMsg.classList.add('show')
-    formProdutos.reset()
-})
+    if(hasError) {
+        formMsg.classList.remove('show');
+        return;
+    }
 
+    window.localStorage.setItem('product-name', inputName.value);
+    window.localStorage.setItem('product-price', inputPrice.value);
+    
+    let trNode = document.createElement('tr');
+    let tdName = document.createElement('td');
+    let tdPrice = document.createElement('td');
+    let tdAction = document.createElement('td');
 
-inputName.addEventListener('input', event => {
-    outputName.textContent = event.target.value;
+    tdName.textContent = inputName.value;
+    tdPrice.textContent = inputPrice.value;
+    trNode.append(tdName, tdPrice, tdAction);
+
+    productList.querySelector('tbody').prepend(trNode);
+
+    formMsg.classList.add('show');
+    formProdutos.reset();
+
+    setTimeout(() => {
+        formMsg.classList.remove('show');
+    }, 2000);
+    
 });
-
-inputPrice.addEventListener('input', event => {
-    outputPrice.textContent = event.target.value;
-})
-
 
 
 

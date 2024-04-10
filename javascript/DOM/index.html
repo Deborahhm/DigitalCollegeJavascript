@@ -13,8 +13,18 @@
             color: green;
             display: none;
         }
-        
+
         .show {
+            display: block;
+        }
+        #product-list th, #product-list td {
+            border: 1px solid;
+        }
+        #product-list {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        small {
             display: block;
         }
     </style>
@@ -26,23 +36,30 @@
         <label for="input-name">Nome</label>
         <br>
         <input type="text" name="name" id="input-name">
-        <br>
         <small class="error" id="input-name-error"></small>
         <br>
         <br>
         <label for="input-price">Preço</label>
         <br>
         <input type="text" name="price" id="input-price">
-        <br>
         <small class="error" id="input-price-error"></small>
         <br>
         <br>
         <button>Cadastrar</button>
     </form>
-    <br>
+    <hr>
 
-    <div id="name"></div>
-    <div id="price"></div>
+    <table id="product-list">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 
     <script src="script.js"></script>
 </body>
