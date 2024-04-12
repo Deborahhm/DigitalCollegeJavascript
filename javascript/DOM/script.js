@@ -11,6 +11,21 @@ let storage = window.localStorage.getItem('products');
 storage = JSON.parse(storage);
 
 
+productList.querySelector('tbody').addEventListener('click', event => {
+    let targetIndex = event.target.dataset.editindex;
+
+    if(!targetIndex) {
+        return;
+    }
+
+    targetIndex = parseInt(targetIndex);
+
+    let product = storage[targetIndex];
+
+    inputName.value = product.name;
+    inputPrice.value = product.price;
+    formProdutos.dataset.formindex = targetIndex;
+})
 
 storage.forEach(function (item, index) {
 
@@ -22,11 +37,11 @@ storage.forEach(function (item, index) {
     let editLink = document.createElement('a');
     editLink.href = "#edit";
     editLink.textContent = "Editar ";
+    editLink.dataset.editindex = index;
     
     let deleteLink = document.createElement('a');
     deleteLink.href = "#delete";
     deleteLink.textContent = "Excluir ";
-    deleteLink.classList.add('delete-action');
     deleteLink.dataset.index = index;
 
     deleteLink.addEventListener('click', event => {
@@ -48,10 +63,10 @@ storage.forEach(function (item, index) {
     productList.querySelector('tbody').prepend(trNode);
 });
 
-console.log(storage);
-
 formProdutos.addEventListener('submit', event => {
     event.preventDefault();
+
+    console.log(event.target);
 
     inputNameError.textContent = '';
     inputPriceError.textContent = '';
@@ -93,6 +108,7 @@ formProdutos.addEventListener('submit', event => {
     let editLink = document.createElement('a');
     editLink.href = "#edit";
     editLink.textContent = "Editar ";
+    editLink.dataset.editindex = storage.length-1;
     
     let deleteLink = document.createElement('a');
     deleteLink.href = "#delete";
