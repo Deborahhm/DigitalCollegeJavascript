@@ -10,7 +10,10 @@ let productList = document.getElementById('product-list');
 let storage = window.localStorage.getItem('products');
 storage = JSON.parse(storage);
 
+
+
 storage.forEach(function (item, index) {
+
     let trNode = document.createElement('tr');
     let tdName = document.createElement('td');
     let tdPrice = document.createElement('td');
@@ -23,15 +26,27 @@ storage.forEach(function (item, index) {
     let deleteLink = document.createElement('a');
     deleteLink.href = "#delete";
     deleteLink.textContent = "Excluir ";
+    deleteLink.classList.add('delete-action');
     deleteLink.dataset.index = index;
 
-    tdAction.append(editLink, deleteLink);
+    deleteLink.addEventListener('click', event => {
+        let dataIndex = event.target.dataset.index;
+        let parentTr = event.target.parentNode.parentNode
+        parentTr.remove();
+        
+        storage = storage.filter(function(item, index) {
+            return parseInt(dataIndex) !== index
+        });
 
-    tdName.textContent = item.name;
-    tdPrice.textContent = item.price;
+        window.localStorage.setItem('products', JSON.stringify(storage));
+    });
+
+    tdAction.append(editLink, deleteLink);
+    tdName.textContent = item?.name;
+    tdPrice.textContent = item?.price;
     trNode.append(tdName, tdPrice, tdAction);
     productList.querySelector('tbody').prepend(trNode);
-})
+});
 
 console.log(storage);
 
@@ -74,6 +89,30 @@ formProdutos.addEventListener('submit', event => {
 
     tdName.textContent = inputName.value;
     tdPrice.textContent = inputPrice.value;
+
+    let editLink = document.createElement('a');
+    editLink.href = "#edit";
+    editLink.textContent = "Editar ";
+    
+    let deleteLink = document.createElement('a');
+    deleteLink.href = "#delete";
+    deleteLink.textContent = "Excluir ";
+    deleteLink.classList.add('delete-action');
+    deleteLink.dataset.index = storage.length-1;
+
+    deleteLink.addEventListener('click', event => {
+        let dataIndex = event.target.dataset.index;
+        let parentTr = event.target.parentNode.parentNode
+        parentTr.remove();
+        
+        storage = storage.filter(function(item, index) {
+            return parseInt(dataIndex) !== index
+        });
+
+        window.localStorage.setItem('products', JSON.stringify(storage));
+    });
+
+    tdAction.append(editLink, deleteLink);
     trNode.append(tdName, tdPrice, tdAction);
 
     productList.querySelector('tbody').prepend(trNode);
