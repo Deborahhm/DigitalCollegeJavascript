@@ -1,11 +1,15 @@
 
-let formProdutos = document.getElementById('form-produtos');
-let inputName = document.getElementById('input-name');
-let inputPrice = document.getElementById('input-price');
-let inputNameError = document.getElementById('input-name-error');
-let inputPriceError = document.getElementById('input-price-error');
-let formMsg = document.getElementById('form-msg');
-let productList = document.getElementById('product-list');
+import elements from "./js/elements.js";
+
+console.log(elements.formMsg);
+
+// let formProdutos = document.getElementById('form-produtos');
+// let inputName = document.getElementById('input-name');
+// let inputPrice = document.getElementById('input-price');
+// let inputNameError = document.getElementById('input-name-error');
+// let inputPriceError = document.getElementById('input-price-error');
+// let formMsg = document.getElementById('form-msg');
+// let productList = document.getElementById('product-list');
 
 let storage = window.localStorage.getItem('products');
 storage = JSON.parse(storage) ?? [];
