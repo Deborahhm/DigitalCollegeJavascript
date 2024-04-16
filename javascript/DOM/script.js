@@ -8,7 +8,7 @@ let formMsg = document.getElementById('form-msg');
 let productList = document.getElementById('product-list');
 
 let storage = window.localStorage.getItem('products');
-storage = JSON.parse(storage);
+storage = JSON.parse(storage) ?? [];
 
 
 productList.querySelector('tbody').addEventListener('click', event => {
@@ -35,12 +35,12 @@ storage.forEach(function (item, index) {
     let tdAction = document.createElement('td');
     
     let editLink = document.createElement('a');
-    editLink.href = "#edit";
+    editLink.href = "#";
     editLink.textContent = "Editar ";
     editLink.dataset.editindex = index;
     
     let deleteLink = document.createElement('a');
-    deleteLink.href = "#delete";
+    deleteLink.href = "#";
     deleteLink.textContent = "Excluir ";
     deleteLink.dataset.index = index;
 
@@ -66,8 +66,6 @@ storage.forEach(function (item, index) {
 formProdutos.addEventListener('submit', event => {
     event.preventDefault();
 
-    console.log(event.target);
-
     inputNameError.textContent = '';
     inputPriceError.textContent = '';
 
@@ -92,26 +90,39 @@ formProdutos.addEventListener('submit', event => {
         name: inputName.value,
         price: inputPrice.value
     }
-
-    storage.push(product);
-
-    window.localStorage.setItem('products', JSON.stringify(storage));
     
-    let trNode = document.createElement('tr');
+    let formIndex = event.target.dataset.formindex;
+    formIndex = parseInt(formIndex);
+
+    let editLink = document.createElement('a');
+    editLink.href = "#";
+    editLink.textContent = "Editar ";
+
     let tdName = document.createElement('td');
     let tdPrice = document.createElement('td');
     let tdAction = document.createElement('td');
+    let trNode = "";
+    let isSave = true;
+
+    if((typeof formIndex === 'number' || formIndex) && storage[formIndex]) {
+        storage[formIndex] = product;
+        trNode = document.querySelector(`[data-editindex="${formIndex}"]`).parentNode.parentNode
+        trNode.innerHTML = '';
+        editLink.dataset.editindex = formIndex;
+        isSave = false;
+    } else {
+        storage.push(product);
+        trNode = document.createElement('tr');
+        editLink.dataset.editindex = storage.length-1;
+    }
+
+    window.localStorage.setItem('products', JSON.stringify(storage));
 
     tdName.textContent = inputName.value;
     tdPrice.textContent = inputPrice.value;
-
-    let editLink = document.createElement('a');
-    editLink.href = "#edit";
-    editLink.textContent = "Editar ";
-    editLink.dataset.editindex = storage.length-1;
     
     let deleteLink = document.createElement('a');
-    deleteLink.href = "#delete";
+    deleteLink.href = "#";
     deleteLink.textContent = "Excluir ";
     deleteLink.classList.add('delete-action');
     deleteLink.dataset.index = storage.length-1;
@@ -131,7 +142,9 @@ formProdutos.addEventListener('submit', event => {
     tdAction.append(editLink, deleteLink);
     trNode.append(tdName, tdPrice, tdAction);
 
-    productList.querySelector('tbody').prepend(trNode);
+    if(isSave) {
+        productList.querySelector('tbody').prepend(trNode);
+    }
 
     formMsg.classList.add('show');
     formProdutos.reset();
