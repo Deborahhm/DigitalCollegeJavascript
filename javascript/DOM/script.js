@@ -1,10 +1,14 @@
 
+
 import elements from "./js/elements.js";
 import storage from "./storage.js";
+import ProductLine from './js/components/ProductLine.js';
 
 let products = storage.getProducts();
 
 elements.productList.querySelector('tbody').addEventListener('click', event => {
+    event.preventDefault();
+
     let targetIndex = event.target.dataset.editindex;
 
     if(!targetIndex) {
@@ -22,38 +26,13 @@ elements.productList.querySelector('tbody').addEventListener('click', event => {
 
 products.forEach(function (item, index) {
 
-    let trNode = document.createElement('tr');
-    let tdName = document.createElement('td');
-    let tdPrice = document.createElement('td');
-    let tdAction = document.createElement('td');
-    
-    let editLink = document.createElement('a');
-    editLink.href = "#";
-    editLink.textContent = "Editar ";
-    editLink.dataset.editindex = index;
-    
-    let deleteLink = document.createElement('a');
-    deleteLink.href = "#";
-    deleteLink.textContent = "Excluir ";
-    deleteLink.dataset.index = index;
-
-    deleteLink.addEventListener('click', event => {
-        let dataIndex = event.target.dataset.index;
-        let parentTr = event.target.parentNode.parentNode
-        parentTr.remove();
-        
-        products = products.filter(function(item, index) {
-            return parseInt(dataIndex) !== index
-        });
-
-        storage.setProducts(products)
+    let tr = ProductLine({
+        name: item?.name,
+        price: item?.price,
+        id: index
     });
 
-    tdAction.append(editLink, deleteLink);
-    tdName.textContent = item?.name;
-    tdPrice.textContent = item?.price;
-    trNode.append(tdName, tdPrice, tdAction);
-    elements.productList.querySelector('tbody').prepend(trNode);
+    elements.productList.querySelector('tbody').innerHTML += tr;
 });
 
 elements.formProdutos.addEventListener('submit', event => {
