@@ -1,4 +1,7 @@
 
+var clickEvent = function (event) {
+    console.log(event);
+}
 
 import elements from "./js/elements.js";
 import storage from "./storage.js";
@@ -29,7 +32,7 @@ products.forEach(function (item, index) {
     let tr = ProductLine({
         name: item?.name,
         price: item?.price,
-        id: index
+        id: index+1
     });
 
     elements.productList.querySelector('tbody').innerHTML += tr;
@@ -74,6 +77,7 @@ elements.formProdutos.addEventListener('submit', event => {
     let tdPrice = document.createElement('td');
     let tdAction = document.createElement('td');
     let trNode = "";
+    let tr;
     let isSave = true;
 
     if((typeof formIndex === 'number' || formIndex) && products[formIndex]) {
@@ -84,38 +88,18 @@ elements.formProdutos.addEventListener('submit', event => {
         isSave = false;
     } else {
         products.push(product);
-        trNode = document.createElement('tr');
-        editLink.dataset.editindex = products.length-1;
+
+        tr = ProductLine({
+            name: product?.name,
+            price: product?.price,
+            id: products.length
+        });
     }
 
     storage.setProducts(products);
 
-    tdName.textContent = elements.inputName.value;
-    tdPrice.textContent = elements.inputPrice.value;
-    
-    let deleteLink = document.createElement('a');
-    deleteLink.href = "#";
-    deleteLink.textContent = "Excluir ";
-    deleteLink.classList.add('delete-action');
-    deleteLink.dataset.index = products.length-1;
-
-    deleteLink.addEventListener('click', event => {
-        let dataIndex = event.target.dataset.index;
-        let parentTr = event.target.parentNode.parentNode
-        parentTr.remove();
-        
-        product = product.filter(function(item, index) {
-            return parseInt(dataIndex) !== index
-        });
-        
-        storage.setProducts(product);
-    });
-
-    tdAction.append(editLink, deleteLink);
-    trNode.append(tdName, tdPrice, tdAction);
-
     if(isSave) {
-        elements.productList.querySelector('tbody').prepend(trNode);
+        elements.productList.querySelector('tbody').innerHTML += tr;
     }
 
     elements.formMsg.classList.add('show');
