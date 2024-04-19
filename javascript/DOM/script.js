@@ -4,8 +4,11 @@ var clickEvent = function (event) {
 }
 
 import elements from "./js/elements.js";
-import storage from "./storage.js";
+import storage from "./js/storage.js";
 import ProductLine from './js/components/ProductLine.js';
+import FormProduct from "./js/components/FormProduct.js";
+
+elements.formProducts.innerHTML = FormProduct();
 
 let products = storage.getProducts();
 
@@ -38,6 +41,7 @@ products.forEach(function (item, index) {
     elements.productList.querySelector('tbody').innerHTML += tr;
 });
 
+/*
 elements.formProdutos.addEventListener('submit', event => {
     event.preventDefault();
 
@@ -73,9 +77,6 @@ elements.formProdutos.addEventListener('submit', event => {
     editLink.href = "#";
     editLink.textContent = "Editar ";
 
-    let tdName = document.createElement('td');
-    let tdPrice = document.createElement('td');
-    let tdAction = document.createElement('td');
     let trNode = "";
     let tr;
     let isSave = true;
@@ -87,13 +88,14 @@ elements.formProdutos.addEventListener('submit', event => {
         editLink.dataset.editindex = formIndex;
         isSave = false;
     } else {
-        products.push(product);
-
+        
         tr = ProductLine({
             name: product?.name,
             price: product?.price,
-            id: products.length
+            id: products.length+1
         });
+
+        products.push(product);
     }
 
     storage.setProducts(products);
@@ -109,7 +111,7 @@ elements.formProdutos.addEventListener('submit', event => {
         elements.formMsg.classList.remove('show');
     }, 2000);
     
-});
+});*/
 
 
 

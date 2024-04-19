@@ -1,6 +1,6 @@
 
 export default {
-    formProdutos: document.getElementById('form-produtos'),
+    formProducts: document.getElementById('form-products'),
     inputName: document.getElementById('input-name'),
     inputPrice: document.getElementById('input-price'),
     inputNameError: document.getElementById('input-name-error'),

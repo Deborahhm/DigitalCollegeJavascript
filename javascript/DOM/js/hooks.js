@@ -9,6 +9,6 @@ export function useEvent(functionToExecute) {
         window[functionName] = functionToExecute;
     }
 
-    return `${functionName}()`;
+    return `${functionName}`;
 
 }

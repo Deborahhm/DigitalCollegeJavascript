@@ -26,5 +26,16 @@ export default {
     getProducts: function() {
         let products = this.getItem('products');
         return Array.isArray(products) ? products : [];
-    }
+    },
+
+    deleteProduct: function (id) {
+        let products = this.getProducts();
+
+        let newProductList = products.filter(function(item, index) {
+            return index !== id
+        });
+
+        this.setProducts(newProductList);
+    } 
+    
 }
