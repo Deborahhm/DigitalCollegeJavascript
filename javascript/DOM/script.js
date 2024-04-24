@@ -1,41 +1,23 @@
 
-var clickEvent = function (event) {
-    console.log(event);
-}
-
 import elements from "./js/elements.js";
 import storage from "./js/storage.js";
 import ProductLine from './js/components/ProductLine.js';
 import FormProduct from "./js/components/FormProduct.js";
+import { createState } from "./js/state.js";
 
-elements.formProducts.innerHTML = FormProduct();
+let editIdState = createState();
+
+document.getElementById('form-products-container').innerHTML = FormProduct({editIdState});
 
 let products = storage.getProducts();
-
-elements.productList.querySelector('tbody').addEventListener('click', event => {
-    event.preventDefault();
-
-    let targetIndex = event.target.dataset.editindex;
-
-    if(!targetIndex) {
-        return;
-    }
-
-    targetIndex = parseInt(targetIndex);
-
-    let product = products[targetIndex];
-
-    elements.inputName.value = product.name;
-    elements.inputPrice.value = product.price;
-    elements.formProdutos.dataset.formindex = targetIndex;
-})
 
 products.forEach(function (item, index) {
 
     let tr = ProductLine({
         name: item?.name,
         price: item?.price,
-        id: index+1
+        id: index+1,
+        editIdState
     });
 
     elements.productList.querySelector('tbody').innerHTML += tr;

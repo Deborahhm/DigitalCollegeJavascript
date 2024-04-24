@@ -5,7 +5,7 @@ export default function InputGroup(props) {
         <div>
             <label>${props.label}</label>
             <br>
-            <input type="${props.inputType}">  
+            <input id="${props.id}"  value="${props.value}" oninput="${props.onChange}(event)" type="${props.inputType}">
         </div>
     `;
 }

@@ -1,4 +1,6 @@
 
+
+
 export function useEvent(functionToExecute) {
     
     let functionName = functionToExecute.name === '' 
@@ -11,4 +13,18 @@ export function useEvent(functionToExecute) {
 
     return `${functionName}`;
 
+}
+
+export function useState(defaultValue) {
+    let state = defaultValue
+    
+    const getState = () => state;
+
+    const setState = (value) => {
+        console.log(value);
+        state = value
+    }
+
+
+    return [getState, setState];
 }
